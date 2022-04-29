@@ -1,2 +1,2 @@
-This app is by default listening for events/commands on the /slack/events & /slack/commands path
-This app echoes any text sent with the /echo command
+This app is by default listening for events/commands and team_join events on the /slack/events & /slack/commands path
+This app echoes any text sent with the /echo command and logs a message when a user joins the slack workspace
