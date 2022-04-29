@@ -29,6 +29,25 @@ app.command('/echo', async ({ command, ack, say }) => {
     }
 }); 
 
+
+const welcomeChannelId = 'C03DFG05KNF';
+
+// When a user joins the team, send a message in a predefined channel asking them to introduce themselves
+app.event('team_join', async ({ event, client, logger }) => {
+    try {
+    // Call chat.postMessage with the built-in client
+        const result = await client.chat.postMessage({
+        channel: welcomeChannelId,
+        text: `Welcome to the team, <@${event.user.id}>! 🎉 You can introduce yourself in this channel.`
+    });
+    logger.info(result);
+    }
+    catch (error) {
+        logger.error('user couldn\'t join');
+    }
+});
+
+
 (async () => {
     const port = 3000
     // start the app
